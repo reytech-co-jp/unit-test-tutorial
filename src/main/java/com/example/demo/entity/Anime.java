@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.util.Objects;
+
 public class Anime {
     private Integer id;
     private String name;
@@ -34,9 +36,22 @@ public class Anime {
     @Override
     public String toString() {
         return "Anime{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", genre='" + genre + '\'' +
-                '}';
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", genre='" + genre + '\'' +
+            '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Anime)) return false;
+        Anime anime = (Anime) o;
+        return Objects.equals(id, anime.id) && Objects.equals(name, anime.name) && Objects.equals(genre, anime.genre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, genre);
     }
 }
