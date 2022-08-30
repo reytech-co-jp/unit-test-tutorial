@@ -62,7 +62,8 @@ public class AnimeMapperTest {
     }
 
     @Test
-    @DataSet(value = "common/anime.yml")
+    @DataSet(value = "anime.yml")
+    @ExpectedDataSet(value = "anime.yml")
     void 存在しないゲームのIDでゲームを削除しようとする時_ゲームが削除されないこと() {
         animeMapper.deleteAnime(7);
     }
