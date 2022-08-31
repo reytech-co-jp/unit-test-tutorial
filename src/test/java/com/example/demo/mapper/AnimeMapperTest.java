@@ -30,7 +30,7 @@ public class AnimeMapperTest {
             new Anime(1, "鬼滅の刃", "ダークファンタジー"),
             new Anime(2, "SPY×FAMILY", "ホームコメディ")
         );
-        assertThat(animeList).isEqualTo(expectedAnimeList);
+        assertThat(animeList).hasSize(2).isEqualTo(expectedAnimeList);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class AnimeMapperTest {
     @Test
     @DataSet(value = "anime.yml")
     @ExpectedDataSet(value = "anime.yml")
-    void 存在しないゲームのIDでゲームを削除しようとする時_ゲームが削除されないこと() {
+    void 存在しないアニメのIDでアニメを削除しようとする時_ゲームが削除されないこと() {
         animeMapper.deleteAnime(7);
     }
 
