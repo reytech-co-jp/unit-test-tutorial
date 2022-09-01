@@ -42,7 +42,7 @@ public class AnimeMapperTest {
 
     @Test
     @DataSet(value = "anime.yml")
-    void 存在しないゲームのIDでアニメを検索する場合_空のOptionalを取得すること() {
+    void 引数のidに対応したアニメがない時_空のOptionalを取得すること() {
         Optional<Anime> anime = animeMapper.findById(7);
         assertThat(anime).isEqualTo(Optional.empty());
     }
@@ -57,14 +57,14 @@ public class AnimeMapperTest {
     @Test
     @DataSet(value = "anime.yml")
     @ExpectedDataSet(value = "delete/expectedAfterDeleteAnimes.yml")
-    void アニメのidでアニメを削除できること() {
+    void 引数のidに対応したアニメを削除できること() {
         animeMapper.deleteAnime(1);
     }
 
     @Test
     @DataSet(value = "anime.yml")
     @ExpectedDataSet(value = "anime.yml")
-    void 存在しないアニメのIDでアニメを削除しようとする時_ゲームが削除されないこと() {
+    void 引数のidに対応したアニメがない時_アニメが削除されないこと() {
         animeMapper.deleteAnime(7);
     }
 
@@ -73,5 +73,12 @@ public class AnimeMapperTest {
     @ExpectedDataSet(value = "update/expectedAfterUpdateAnimes.yml")
     void アニメを更新できること() {
         animeMapper.updateAnime(new Anime(1, "Demon Slayer", "ダークファンタジー"));
+    }
+
+    @Test
+    @DataSet(value = "anime.yml")
+    @ExpectedDataSet(value = "anime.yml")
+    void 引数のidに対応したアニメがない時_アニメが更新されないこと() {
+        animeMapper.updateAnime(new Anime(5, "Demon Slayer", "ダークファンタジー"));
     }
 }
