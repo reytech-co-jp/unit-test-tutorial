@@ -47,7 +47,7 @@ public class AnimeMapperTest {
     @Test
     @DataSet("animes.yml")
     @ExpectedDataSet("expectedAnimesAfterUpdate.yml")
-    void アニメを変更できること() {
+    void アニメを更新できること() {
         animeMapper.updateAnime(new Anime(1, "Bleach", "Supernatural"));
     }
 
