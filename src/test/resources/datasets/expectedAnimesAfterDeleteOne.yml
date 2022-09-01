@@ -1,0 +1,7 @@
+anime:
+  - id: 2
+    name: "HunterXHunter"
+    genre: "Fantasy"
+  - id: 3
+    name: "OnePiece"
+    genre: "Adventure"

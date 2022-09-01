@@ -1,0 +1,7 @@
+cacheConnection: false
+cacheTableNames: false
+caseInsensitiveStrategy: LOWERCASE
+connectionConfig:
+  url: "jdbc:mysql://localhost:3307/anime_list"
+  user: "user"
+  password: "password"

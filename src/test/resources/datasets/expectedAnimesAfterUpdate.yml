@@ -1,0 +1,10 @@
+anime:
+  - id: 1
+    name: "Bleach"
+    genre: "Supernatural"
+  - id: 2
+    name: "HunterXHunter"
+    genre: "Fantasy"
+  - id: 3
+    name: "OnePiece"
+    genre: "Adventure"
