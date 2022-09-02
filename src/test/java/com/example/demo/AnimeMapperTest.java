@@ -10,7 +10,6 @@ import com.github.database.rider.spring.api.DBRider;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +37,13 @@ public class AnimeMapperTest {
 
     @Test
     @DataSet("animes.yml")
+    void 引数のidに対応したアニメがない時_取得されないこと() {
+        Optional<Anime> anime = animeMapper.findById(4);
+        assertThat(anime).isEmpty();
+    }
+
+    @Test
+    @DataSet("animes.yml")
     @ExpectedDataSet(value = "expectedAnimeAfterCreate.yml", ignoreCols = "id")
     void アニメ登録ができること() {
         Anime anime = new Anime("進撃の巨人", "Action");
@@ -53,6 +59,13 @@ public class AnimeMapperTest {
 
     @Test
     @DataSet("animes.yml")
+    @ExpectedDataSet("animes.yml")
+    void 引数のidに対応したアニメがない時_アニメが更新されないこと() {
+       animeMapper.updateAnime(new Anime(5, "Sword Art Online", "Game"));
+    }
+
+    @Test
+    @DataSet("animes.yml")
     @ExpectedDataSet("expectedAnimesAfterDeleteOne.yml")
     void アニメを削除できること() {
         animeMapper.deleteAnime(1);
@@ -61,7 +74,7 @@ public class AnimeMapperTest {
     @Test
     @DataSet("animes.yml")
     @ExpectedDataSet("animes.yml")
-    void 存在しないアニメのIDでアニメを削除しようとするとき_アニメが削除されないこと() {
+    void 引数のidに対応したアニメがない時＿アニメが削除されないこと() {
         animeMapper.deleteAnime(4);
     }
 }
