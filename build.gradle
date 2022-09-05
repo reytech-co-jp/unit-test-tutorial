@@ -20,6 +20,7 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'com.github.database-rider:rider-spring:1.32.3'
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.2.2'
 }
 
 tasks.named('test') {
